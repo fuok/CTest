@@ -11,17 +11,22 @@
 
 #include <stdio.h>
 
-struct Admin {
-    int index;
-    char* userName;
-    char* password;
-    struct Admin* previous;
-    struct Admin* next;
-};
+struct Admin;
+int getStructAdminSize();
 
-typedef struct Admin AdminNode;//节点定义
-typedef struct Admin* AdminList;//链表指针定义
-
-AdminList cacheAdminList;
+//struct Admin {
+//    int index;
+//    char* userName;
+//    char* password;
+//    struct Admin* previous;
+//    struct Admin* next;
+//};
+//
+//typedef struct Admin AdminNode;//节点定义
+//typedef struct Admin* AdminList;//链表指针定义
+//
+//int getAdminListSize(AdminList L);
+//
+//AdminList cacheAdminList;
 
 #endif /* modeAdmin_h */

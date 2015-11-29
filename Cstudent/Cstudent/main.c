@@ -9,12 +9,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "menu.h"
+#include "modeAdmin.h"
+
+
 void systemStart();
 void systemTest();
 
 int main(int argc, const char * argv[]) {
   
     
+    
+    systemTest();
     
 //    systemStart();
    
@@ -35,5 +40,8 @@ void systemStart(){
 }
 
 void systemTest(){
+    
+    int size=getStructAdminSize();
+    printf("Admin结构大小:%d\n",size);
     
 }

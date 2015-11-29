@@ -6,9 +6,9 @@
 //  Copyright © 2015年 刘阳. All rights reserved.
 //
 
-#include "fileAdmin.h"
-//#include "modeAdmin.h"
 
+#include "fileAdmin.h"
+#include "modeAdmin.h"
 
 char* adminFilePath="/Users/liuyang/Documents/workspace/CTest/admin.txt";
 
@@ -17,16 +17,17 @@ void readAdminFile(){
     
 }
 
-//void writeAdminFile(AdminList list){
-//    FILE* fp;
-//    if ((fp=fopen(adminFilePath, "wb+"))==NULL) {//为何w+也ok的
-//        puts("ERROR");
-//        exit(0);
-//    }
-//    for (int i=0; i<3; i++) {//此处需要倒入获取链表长度方法
-//        fwrite(list, sizeof(AdminNode), 1, fp);
-//    }
-//}
+void writeAdminFile(struct Admin* list){
+    FILE* fp;
+    if ((fp=fopen(adminFilePath, "wb+"))==NULL) {//为何w+也ok的
+        puts("ERROR");
+        exit(0);
+    }
+    for (int i=0; i<3; i++) {//此处需要倒入获取链表长度方法
+        
+        fwrite(list,getStructAdminSize(), 1, fp);//我日
+    }
+}
 
 
 //FILE *fp;
