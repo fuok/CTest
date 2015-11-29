@@ -7,9 +7,33 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
+#include "menu.h"
+void systemStart();
+void systemTest();
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+  
+    
+    
+//    systemStart();
+   
+    
+    
     return 0;
+}
+
+
+//程序启动
+void systemStart(){
+    int selection;
+    selection=loginTypeSelect();
+    
+    
+    
+    
+}
+
+void systemTest(){
+    
 }

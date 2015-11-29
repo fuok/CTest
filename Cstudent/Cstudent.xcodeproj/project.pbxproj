@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		CD0A78841C08308B00F56193 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = CD0A78831C08308B00F56193 /* main.c */; };
+		CD0A788C1C0834C000F56193 /* menu.c in Sources */ = {isa = PBXBuildFile; fileRef = CD0A788A1C0834C000F56193 /* menu.c */; };
+		CD0A78A21C08451C00F56193 /* modeStudent.c in Sources */ = {isa = PBXBuildFile; fileRef = CD0A78A01C08451C00F56193 /* modeStudent.c */; };
+		CD0A78A51C08452E00F56193 /* modeAdmin.c in Sources */ = {isa = PBXBuildFile; fileRef = CD0A78A31C08452E00F56193 /* modeAdmin.c */; };
+		CD0A78A81C0B231B00F56193 /* fileAdmin.c in Sources */ = {isa = PBXBuildFile; fileRef = CD0A78A61C0B231B00F56193 /* fileAdmin.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,14 @@
 /* Begin PBXFileReference section */
 		CD0A78801C08308B00F56193 /* Cstudent */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Cstudent; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0A78831C08308B00F56193 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		CD0A788A1C0834C000F56193 /* menu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = menu.c; sourceTree = "<group>"; };
+		CD0A788B1C0834C000F56193 /* menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menu.h; sourceTree = "<group>"; };
+		CD0A78A01C08451C00F56193 /* modeStudent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = modeStudent.c; sourceTree = "<group>"; };
+		CD0A78A11C08451C00F56193 /* modeStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = modeStudent.h; sourceTree = "<group>"; };
+		CD0A78A31C08452E00F56193 /* modeAdmin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = modeAdmin.c; sourceTree = "<group>"; };
+		CD0A78A41C08452E00F56193 /* modeAdmin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = modeAdmin.h; sourceTree = "<group>"; };
+		CD0A78A61C0B231B00F56193 /* fileAdmin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fileAdmin.c; sourceTree = "<group>"; };
+		CD0A78A71C0B231B00F56193 /* fileAdmin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileAdmin.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,14 @@
 			isa = PBXGroup;
 			children = (
 				CD0A78831C08308B00F56193 /* main.c */,
+				CD0A78A61C0B231B00F56193 /* fileAdmin.c */,
+				CD0A78A71C0B231B00F56193 /* fileAdmin.h */,
+				CD0A788A1C0834C000F56193 /* menu.c */,
+				CD0A788B1C0834C000F56193 /* menu.h */,
+				CD0A78A01C08451C00F56193 /* modeStudent.c */,
+				CD0A78A11C08451C00F56193 /* modeStudent.h */,
+				CD0A78A31C08452E00F56193 /* modeAdmin.c */,
+				CD0A78A41C08452E00F56193 /* modeAdmin.h */,
 			);
 			path = Cstudent;
 			sourceTree = "<group>";
@@ -118,6 +138,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD0A78A21C08451C00F56193 /* modeStudent.c in Sources */,
+				CD0A788C1C0834C000F56193 /* menu.c in Sources */,
+				CD0A78A81C0B231B00F56193 /* fileAdmin.c in Sources */,
+				CD0A78A51C08452E00F56193 /* modeAdmin.c in Sources */,
 				CD0A78841C08308B00F56193 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +261,7 @@
 				CD0A78891C08308B00F56193 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
