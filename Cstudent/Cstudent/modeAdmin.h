@@ -10,30 +10,23 @@
 #define modeAdmin_h
 
 #include <stdio.h>
-
-struct Admin;
-
+//定义结构体
+struct Admin {
+    int index;
+    char* userName;
+    char* password;
+    struct Admin* previous;
+    struct Admin* next;
+};
+//typedef
 typedef struct Admin AdminNode;
 typedef struct Admin* AdminList;
-
+//函数原型
 AdminList createNewAdminNode(char* userName,char* password);
 AdminList createEmptyAdminList();
 AdminList insertAdminAt(AdminList L,char* userName,char* password);
 int getStructAdminSize();
 
-//struct Admin {
-//    int index;
-//    char* userName;
-//    char* password;
-//    struct Admin* previous;
-//    struct Admin* next;
-//};
-//
-//typedef struct Admin AdminNode;//节点定义
-//typedef struct Admin* AdminList;//链表指针定义
-//
-//int getAdminListSize(AdminList L);
-//
-//AdminList cacheAdminList;
+
 
 #endif /* modeAdmin_h */

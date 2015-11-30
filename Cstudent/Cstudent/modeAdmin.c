@@ -11,18 +11,18 @@
 #include <stdlib.h>
 #include <assert.h>
 
-struct Admin {
-    int index;
-    char* userName;
-    char* password;
-    struct Admin* previous;
-    struct Admin* next;
-};
+//struct Admin {
+//    int index;
+//    char* userName;
+//    char* password;
+//    struct Admin* previous;
+//    struct Admin* next;
+//};
 
 
 //创建一个空链表，空链表仅包含头节点而且头节点指针为NULL
 AdminList createEmptyAdminList(){
-    return createNewAdminNode("","");
+    return createNewAdminNode("defaut","defaut");
 }
 
 

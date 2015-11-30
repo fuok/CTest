@@ -9,6 +9,11 @@
 #ifndef fileAdmin_h
 #define fileAdmin_h
 
+#include <stdlib.h>
 #include <stdio.h>
+#include "modeAdmin.h"
+
+AdminList readAdminFile();
+void writeAdminFile(AdminList list);
 
 #endif /* fileAdmin_h */

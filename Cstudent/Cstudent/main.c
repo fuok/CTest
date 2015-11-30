@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include "menu.h"
 #include "modeAdmin.h"
+#include "fileAdmin.h"
 
 
 void systemStart();
@@ -45,9 +46,10 @@ void systemTest(){
     printf("Admin结构大小:%d\n",size);
     
     struct Admin* head = createEmptyAdminList();
-    for (int i=0; i<2; i++) {
-        insertAdminAt(head, "admin", "admin");
-    }
+    insertAdminAt(head, "admin1", "pass1");
+    insertAdminAt(head, "admin2", "pass2");
+    
+    writeAdminFile(head);
     
     
 }

@@ -6,28 +6,41 @@
 //  Copyright © 2015年 刘阳. All rights reserved.
 //
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "fileAdmin.h"
-#include "modeAdmin.h"
 
 char* adminFilePath="/Users/liuyang/Documents/workspace/CTest/admin.txt";
 
 
-void readAdminFile(){
+//
+AdminList readAdminFile(){
+    FILE* fp;
+    if ((fp=fopen(adminFilePath, "rb+"))==NULL) {//为何w+也ok的
+        puts("ERROR");
+        exit(0);
+    }
+    fseek(fp, 0, SEEK_SET);//如果要直接跳到输出第二个学生，offset可以输入sizeof(struct Student)
+    for (int i=0; i<3; i++) {
+        struct Admin admin;
+        fread(&admin,getStructAdminSize(), 1, fp);
+        printf("%s,%s\n",admin.userName,admin.password);
+    }
+    fclose(fp);
     
+    return NULL;
 }
 
-void writeAdminFile(struct Admin* list){
+
+//
+void writeAdminFile(AdminList list){
     FILE* fp;
     if ((fp=fopen(adminFilePath, "wb+"))==NULL) {//为何w+也ok的
         puts("ERROR");
         exit(0);
     }
     for (int i=0; i<3; i++) {//此处需要倒入获取链表长度方法
-        
         fwrite(list,getStructAdminSize(), 1, fp);//我日
     }
+    fclose(fp);
 }
 
 
