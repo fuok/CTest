@@ -12,6 +12,13 @@
 #include <stdio.h>
 
 struct Admin;
+
+typedef struct Admin AdminNode;
+typedef struct Admin* AdminList;
+
+AdminList createNewAdminNode(char* userName,char* password);
+AdminList createEmptyAdminList();
+AdminList insertAdminAt(AdminList L,char* userName,char* password);
 int getStructAdminSize();
 
 //struct Admin {

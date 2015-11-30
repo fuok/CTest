@@ -44,4 +44,10 @@ void systemTest(){
     int size=getStructAdminSize();
     printf("Admin结构大小:%d\n",size);
     
+    struct Admin* head = createEmptyAdminList();
+    for (int i=0; i<2; i++) {
+        insertAdminAt(head, "admin", "admin");
+    }
+    
+    
 }

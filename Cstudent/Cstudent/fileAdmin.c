@@ -6,7 +6,8 @@
 //  Copyright © 2015年 刘阳. All rights reserved.
 //
 
-
+#include <stdlib.h>
+#include <stdio.h>
 #include "fileAdmin.h"
 #include "modeAdmin.h"
 
