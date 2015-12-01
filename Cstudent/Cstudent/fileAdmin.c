@@ -28,18 +28,15 @@ AdminList readAdminFile(AdminList L){
     fseek(fp, 0, SEEK_END);
     int length=(int)ftell(fp)/getStructAdminSize();
     fseek(fp, 0, SEEK_SET);
-    printf("数据长度:%d",length);
+//    printf("数据长度:%d\n",length);
     for (int i=0;i<length; i++) {
-        
         struct Admin admin;
         fread(&admin,sizeof(admin), 1, fp);
         printf("%s,%s\n",admin.userName,admin.password);
         //        insertAdminNode(L, admin);//可能是这个直接传对象方法不行，用回老方法试试，TODO
         insertAdminAt(L, admin.userName, admin.password);
-        
     }
     fclose(fp);
-    
     return L;
 }
 

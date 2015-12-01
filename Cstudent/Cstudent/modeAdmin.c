@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
 //struct Admin {
 //    int index;
@@ -74,7 +75,7 @@ AdminList insertAdminAt(AdminList L,char* userName,char* password){
 AdminList getByUserName(AdminList L,char* userName){
     assert(L!=NULL);
     AdminList temPtr=L->next;//这样做没问题，虽然这个指针是临时变量，但是从一个确定的地址获取到的，返回这个指针是不会出错的
-    while ((temPtr!=NULL)&&(temPtr->userName!=userName)) {
+    while ((temPtr!=NULL)&&(strcmp(temPtr->userName,userName))!=0) {//  temPtr->userName!=userName)) {
         temPtr=temPtr->next;
     }
     return temPtr;

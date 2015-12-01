@@ -9,11 +9,17 @@
 #ifndef menu_h
 #define menu_h
 
+#include <stdlib.h>
 #include <stdio.h>
-
+#include <string.h>
+#include "modeAdmin.h"
+#include "fileAdmin.h"
 
 
 int loginTypeSelect();
+int loginTypeAdmin();
+int loginTypeStudent();
+
 void wrongInput(int (*funcPtr)());
 
 #endif /* menu_h */

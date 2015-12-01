@@ -20,9 +20,11 @@ int main(int argc, const char * argv[]) {
   
     
     
-    systemTest();
-    
-//    systemStart();
+    if (/* DISABLES CODE */ (1)) {
+        systemStart();
+    }else{
+        systemTest();
+    }
    
     
     
@@ -32,9 +34,13 @@ int main(int argc, const char * argv[]) {
 
 //程序启动
 void systemStart(){
-    int selection;
-    selection=loginTypeSelect();
-    
+    int selection=loginTypeSelect();
+    printf("%d\n",selection);
+    if (1==selection) {
+        loginTypeAdmin();
+    }else{
+        loginTypeStudent();
+    }
     
     
     
@@ -45,8 +51,10 @@ void systemStart(){
 void systemTest(){
     
     //建立测试数据
+    char str1[]={'a','d','m','i','n','1','\0'};
+    char str2[]={'p','a','s','s','1','\0'};
     struct Admin* head = createEmptyAdminList();
-    insertAdminAt(head, "admin1", "pass1");
+    insertAdminAt(head, "admin1","pass1");
     insertAdminAt(head, "admin2", "pass2");
 //    getLastAdminNode(head);//正确
     
@@ -56,11 +64,11 @@ void systemTest(){
     //读取测试数据
     struct Admin* head2 = createEmptyAdminList();
     readAdminFile(head2);
-    getLastAdminNode(head2);
+//    getLastAdminNode(head2);//正确
     
     //缓存测试数据//要不先不做缓存了吧😄
     //直接做查询
-    if (getByUserName(head2, "admin1")) {
+    if (getByUserName(head2, "admin2")) {
         printf("找到了\n");
     }else{
         printf("没找到\n");
