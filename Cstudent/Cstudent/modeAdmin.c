@@ -70,6 +70,17 @@ AdminList insertAdminAt(AdminList L,char* userName,char* password){
 }
 
 
+//按值查找//这里不解决重复值的问题
+AdminList getByUserName(AdminList L,char* userName){
+    assert(L!=NULL);
+    AdminList temPtr=L->next;//这样做没问题，虽然这个指针是临时变量，但是从一个确定的地址获取到的，返回这个指针是不会出错的
+    while ((temPtr!=NULL)&&(temPtr->userName!=userName)) {
+        temPtr=temPtr->next;
+    }
+    return temPtr;
+}
+
+
 //遍历链表,返回长度
 int getAdminListSize(AdminList L){
     //    printf("遍历链表:\n");

@@ -29,6 +29,7 @@ int getAdminListSize(AdminList L);
 int getStructAdminSize();
 AdminList insertAdminNode(AdminList L,AdminNode node);
 AdminList getLastAdminNode(AdminList L);
+AdminList getByUserName(AdminList L,char* userName);
 
 
 #endif /* modeAdmin_h */

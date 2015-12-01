@@ -15,16 +15,28 @@ char* adminFilePath="/Users/liuyang/Documents/workspace/CTest/admin.txt";
 AdminList readAdminFile(AdminList L){
     FILE* fp;
     if ((fp=fopen(adminFilePath, "rb"))==NULL) {//为何w+也ok的
-        puts("ERROR");
-        exit(0);
+        puts("Admin初始化");
+        //        exit(0);
+        //当文件不存在时保存一个admin默认值
+        struct Admin* defaut = createEmptyAdminList();
+        insertAdminAt(defaut, "admin", "pass");
+        writeAdminFile(defaut);
+        fp=fopen(adminFilePath, "rb");
     }
-    fseek(fp, 0, SEEK_SET);//如果要直接跳到输出第二个学生，offset可以输入sizeof(struct Student)
-    for (int i=0; i<2; i++) {
+    
+    //因为feof总会多输出一个结果，所以手动算一下数据长度
+    fseek(fp, 0, SEEK_END);
+    int length=(int)ftell(fp)/getStructAdminSize();
+    fseek(fp, 0, SEEK_SET);
+    printf("数据长度:%d",length);
+    for (int i=0;i<length; i++) {
+        
         struct Admin admin;
         fread(&admin,sizeof(admin), 1, fp);
         printf("%s,%s\n",admin.userName,admin.password);
-        //                insertAdminNode(L, admin);//可能是这个直接传对象方法不行，用回老方法试试，TODO
+        //        insertAdminNode(L, admin);//可能是这个直接传对象方法不行，用回老方法试试，TODO
         insertAdminAt(L, admin.userName, admin.password);
+        
     }
     fclose(fp);
     
