@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include "modeAdmin.h"
 
-AdminList readAdminFile();
-void writeAdminFile(AdminList list);
+AdminList readAdminFile(AdminList L);
+void writeAdminFile(AdminList L);
 
 #endif /* fileAdmin_h */

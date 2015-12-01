@@ -12,52 +12,45 @@ char* adminFilePath="/Users/liuyang/Documents/workspace/CTest/admin.txt";
 
 
 //
-AdminList readAdminFile(){
+AdminList readAdminFile(AdminList L){
     FILE* fp;
-    if ((fp=fopen(adminFilePath, "rb+"))==NULL) {//为何w+也ok的
+    if ((fp=fopen(adminFilePath, "rb"))==NULL) {//为何w+也ok的
         puts("ERROR");
         exit(0);
     }
     fseek(fp, 0, SEEK_SET);//如果要直接跳到输出第二个学生，offset可以输入sizeof(struct Student)
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<2; i++) {
         struct Admin admin;
-        fread(&admin,getStructAdminSize(), 1, fp);
+        fread(&admin,sizeof(admin), 1, fp);
         printf("%s,%s\n",admin.userName,admin.password);
+        //                insertAdminNode(L, admin);//可能是这个直接传对象方法不行，用回老方法试试，TODO
+        insertAdminAt(L, admin.userName, admin.password);
     }
     fclose(fp);
     
-    return NULL;
+    return L;
 }
 
 
 //
-void writeAdminFile(AdminList list){
+void writeAdminFile(AdminList L){
     FILE* fp;
     if ((fp=fopen(adminFilePath, "wb+"))==NULL) {//为何w+也ok的
         puts("ERROR");
         exit(0);
     }
-    for (int i=0; i<3; i++) {//此处需要倒入获取链表长度方法
-        fwrite(list,getStructAdminSize(), 1, fp);//我日
+    //这里我没有去研究能否直接写入整个list，仍是以保存为单个结构体数据再写入的方法//估计是不行的，保存内存地址无意义
+    int dataLength=getAdminListSize(L);//貌似也没什么用
+    printf("写入admin数据，长度：%d\n",dataLength);
+    AdminList temPtr=L->next;
+    
+    while (temPtr!=NULL) {
+        //        printf("%s,%s\n",temPtr->userName,temPtr->password);
+        fwrite(temPtr,getStructAdminSize(), 1, fp);
+        temPtr=temPtr->next;
     }
+    
     fclose(fp);
 }
 
 
-//FILE *fp;
-//if ((fp=fopen("/Users/liuyang/Documents/The9课程/Ctest18文件操作/student.txt", "wb+"))==NULL) {//为何w+也ok的
-//    puts("ERROR");
-//    exit(0);
-//}
-//for (int i=0; i<3; i++) {
-//    fwrite(stu+i, sizeof(struct Student), 1, fp);
-//}
-////    frewind();//不好使
-//fseek(fp, 0, SEEK_SET);//如果要直接跳到输出第二个学生，offset可以输入sizeof(struct Student)
-//printf("归位:%ld\n",ftell(fp));
-//for (int i=0; i<3; i++) {
-//    struct Student stu;
-//    fread(&stu,sizeof(struct Student), 1, fp);
-//    printf("%s,%d\n",stu.name,stu.age);
-//}
-//fclose(fp);

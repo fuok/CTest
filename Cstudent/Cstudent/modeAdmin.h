@@ -25,8 +25,10 @@ typedef struct Admin* AdminList;
 AdminList createNewAdminNode(char* userName,char* password);
 AdminList createEmptyAdminList();
 AdminList insertAdminAt(AdminList L,char* userName,char* password);
+int getAdminListSize(AdminList L);
 int getStructAdminSize();
-
+AdminList insertAdminNode(AdminList L,AdminNode node);
+AdminList getLastAdminNode(AdminList L);
 
 
 #endif /* modeAdmin_h */

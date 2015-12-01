@@ -25,6 +25,28 @@ AdminList createEmptyAdminList(){
     return createNewAdminNode("defaut","defaut");
 }
 
+//插入节点数据，头插法//这个方法不对，先保留，XXX
+AdminList insertAdminNode(AdminList L,AdminNode node){
+    assert(L!=NULL);//断言
+//    AdminNode *newNode=createNewAdminNode(userName,password);
+//    if (&node!=NULL) {
+        //先把插入节点指向前序节点的指向
+        node.next=L->next;
+        //再把前序节点指向新节点，实现插入功能
+        L->next=&node;
+//    }
+    
+    //保存前一
+//    AdminList LP=node.next;
+//    if (LP!=NULL) {
+//        //        printf("im in");
+//        LP->previous=node;
+//    }
+//    newNode->previous=L;
+    
+    return L;
+}
+
 
 //添加节点，头插法
 AdminList insertAdminAt(AdminList L,char* userName,char* password){
@@ -37,13 +59,12 @@ AdminList insertAdminAt(AdminList L,char* userName,char* password){
         L->next=newNode;
     }
     
-    //保存前一
-    AdminList LP=newNode->next;
-    if (LP!=NULL) {
-//        printf("im in");
-        LP->previous=newNode;
-    }
-    newNode->previous=L;
+//保存前一
+//    AdminList LP=newNode->next;
+//    if (LP!=NULL) {
+//        LP->previous=newNode;
+//    }
+//    newNode->previous=L;
     
     return newNode;
 }
@@ -60,6 +81,16 @@ int getAdminListSize(AdminList L){
         index++;//如果需要获取链表长度，在此进行处理
     }
     return index;
+}
+
+//遍历链表，返回最后一个节点，引入这个方法只用于输出测试结果，不做其他
+AdminList getLastAdminNode(AdminList L){
+    AdminList temPtr=L->next;
+    while (temPtr!=NULL) {
+        printf("检验内容：%s,%s\n",temPtr->userName,temPtr->password);
+        temPtr=temPtr->next;
+    }
+    return temPtr;
 }
 
 

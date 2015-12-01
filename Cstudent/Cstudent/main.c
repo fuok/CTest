@@ -40,16 +40,23 @@ void systemStart(){
     
 }
 
+
+//测试数据
 void systemTest(){
     
-    int size=getStructAdminSize();
-    printf("Admin结构大小:%d\n",size);
-    
+    //建立测试数据
     struct Admin* head = createEmptyAdminList();
     insertAdminAt(head, "admin1", "pass1");
     insertAdminAt(head, "admin2", "pass2");
+//    getLastAdminNode(head);//正确
     
+    //写入测试数据
     writeAdminFile(head);
     
+    //读取测试数据
+    struct Admin* head2 = createEmptyAdminList();
+    readAdminFile(head2);
+    getLastAdminNode(head2);
     
+    //缓存测试数据//要不先不做缓存了吧😄
 }
