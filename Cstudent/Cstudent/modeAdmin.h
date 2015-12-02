@@ -13,8 +13,8 @@
 //定义结构体
 struct Admin {
     int index;
-    char* userName;
-    char* password;
+    char userName[20];
+    char password[20];
     struct Admin* previous;
     struct Admin* next;
 };

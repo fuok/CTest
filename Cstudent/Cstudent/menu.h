@@ -17,7 +17,9 @@
 
 
 int loginTypeSelect();
-int loginTypeAdmin();
+AdminList loginTypeAdmin();
+int menuAdminMain();
+void menuAdminPassword();
 int loginTypeStudent();
 
 void wrongInput(int (*funcPtr)());

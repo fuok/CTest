@@ -12,13 +12,6 @@
 #include <assert.h>
 #include <string.h>
 
-//struct Admin {
-//    int index;
-//    char* userName;
-//    char* password;
-//    struct Admin* previous;
-//    struct Admin* next;
-//};
 
 
 //创建一个空链表，空链表仅包含头节点而且头节点指针为NULL
@@ -51,6 +44,7 @@ AdminList insertAdminNode(AdminList L,AdminNode node){
 
 //添加节点，头插法
 AdminList insertAdminAt(AdminList L,char* userName,char* password){
+//    printf("loop!!\n");
     assert(L!=NULL);//断言
     AdminNode *newNode=createNewAdminNode(userName,password);
     if (newNode!=NULL) {
@@ -116,8 +110,8 @@ AdminList createNewAdminNode(char* userName,char* password){
     newNode->previous=NULL;
     newNode->next=NULL;
     newNode->index=-1;
-    newNode->userName=userName;
-    newNode->password=password;
+    strcpy(newNode->userName, userName);
+    strcpy(newNode->password, password);
     return newNode;
 }
 
