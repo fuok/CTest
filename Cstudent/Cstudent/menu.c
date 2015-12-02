@@ -79,7 +79,7 @@ int menuAdminMain(){
 
 
 //admin修改密码
-void menuAdminPassword(AdminList currentPtr){
+int menuAdminPassword(AdminList currentPtr){
     //确认用户输入
     printf("请输入旧密码:\n");
     char inputOld[20];
@@ -97,8 +97,10 @@ void menuAdminPassword(AdminList currentPtr){
         printf("new=%s\n",currentPtr->password);
         writeAdminFile(cacheAdminList);
         printf("修改成功\n");
+        return 1;
     }else{
         printf("密码错误\n");
+        return 0;
     }
 }
 

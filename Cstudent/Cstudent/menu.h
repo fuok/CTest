@@ -17,13 +17,13 @@
 
 
 int loginTypeSelect();
-AdminList loginTypeAdmin();
+AdminList loginTypeAdmin();//⚠️
 int menuAdminMain();
-void menuAdminPassword();
+int menuAdminPassword();
 int menuAdminManagement();
 
 int loginTypeStudent();//XXX
 
 void wrongInput(int (*funcPtr)());
-
+void systemExit();
 #endif /* menu_h */

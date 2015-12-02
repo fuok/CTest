@@ -109,7 +109,7 @@ AdminList createNewAdminNode(char* userName,char* password){
     }
     newNode->previous=NULL;
     newNode->next=NULL;
-    newNode->index=-1;
+    newNode->index=-1;//暂未用到
     strcpy(newNode->userName, userName);
     strcpy(newNode->password, password);
     return newNode;
