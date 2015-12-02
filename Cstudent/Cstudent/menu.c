@@ -71,7 +71,7 @@ int menuAdminMain(){
     int key;
     scanf("%d",&key);
     if (a!=key&&b!=key) {
-        wrongInput(loginTypeSelect);
+        wrongInput(menuAdminMain);
     }
     //返回输入结果
     return key;
@@ -103,6 +103,20 @@ void menuAdminPassword(AdminList currentPtr){
 }
 
 
+//admin学生管理
+int menuAdminManagement(){
+    //确认用户输入
+    int a=1,b=2,c=3,d=4;
+    printf("选择操作:\n%d,学生浏览\n%d,添加学生\n%d,删除学生\n%d,修改学生\n",a,b,c,d);
+    int key;
+    scanf("%d",&key);
+    if (a!=key&&b!=key&&c!=key&&d!=key) {
+        wrongInput(menuAdminManagement);
+    }
+    
+    //返回输入结果
+    return key;
+}
 
 
 //学生登陆

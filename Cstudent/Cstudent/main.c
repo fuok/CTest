@@ -41,7 +41,7 @@ int main(int argc, const char * argv[]) {
 //程序启动
 void systemStart(){
     int selection=loginTypeSelect();
-//    printf("%d\n",selection);
+    //    printf("%d\n",selection);
     if (1==selection) {//管理员登录
         AdminList currentPtr=loginTypeAdmin();
         if (currentPtr) {//登录成功
@@ -49,7 +49,18 @@ void systemStart(){
             if (1==selection) {//修改密码
                 menuAdminPassword(currentPtr);
             }else{//学生管理
-                
+                selection=menuAdminManagement();
+                switch (selection) {
+                    case 1://学生浏览
+                        
+                        break;
+                    case 2://添加
+                        break;
+                    case 3://删除
+                        break;
+                    case 4://修改
+                        break;
+                }
             }
         }else{//登录失败
             

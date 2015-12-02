@@ -20,7 +20,9 @@ int loginTypeSelect();
 AdminList loginTypeAdmin();
 int menuAdminMain();
 void menuAdminPassword();
-int loginTypeStudent();
+int menuAdminManagement();
+
+int loginTypeStudent();//XXX
 
 void wrongInput(int (*funcPtr)());
 
