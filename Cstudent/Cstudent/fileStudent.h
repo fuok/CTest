@@ -10,5 +10,10 @@
 #define fileStudent_h
 
 #include <stdio.h>
+#include <stdlib.h>
+#include "modeStudent.h"
+
+StudentList readStudentFile();
+void writeStudentFile();
 
 #endif /* fileStudent_h */

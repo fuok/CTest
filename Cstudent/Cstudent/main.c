@@ -96,38 +96,39 @@ void addTestAdmin(){
     //建立测试数据
     //    char str1[]={'a','d','m','i','n','1','\0'};
     //    char str2[]={'p','a','s','s','1','\0'};
-    struct Admin* head = createEmptyAdminList();
-    insertAdminAt(head, "admin1","pass1");
-    insertAdminAt(head, "admin2", "pass2");
+    struct Admin* savePtr = createEmptyAdminList();
+    insertAdminAt(savePtr, "admin1","pass1");
+    insertAdminAt(savePtr, "admin2", "pass2");
     
     //写入测试数据
-    writeAdminFile(head);
+    writeAdminFile(savePtr);
     
     //读取测试数据
-    struct Admin* head2 = createEmptyAdminList();
-    readAdminFile(head2);
+    struct Admin* loadPtr = createEmptyAdminList();
+    readAdminFile(loadPtr);
 }
 
 
 //添加student测试数据
 void addTestStudent(){
     //建立测试数据，添加10条测试数据
-    struct Student* head = createEmptyStudentList();
-    insertStudentAt(head,"C0101","pass1","Tom","C01",21,65,80,100);
-    insertStudentAt(head,"C0105","pass1","John","C01",19,60,81,90);
-    insertStudentAt(head,"C0120","pass1","Jimy","C01",21,75,60,98);
-    insertStudentAt(head,"C0122","pass1","Frank","C01",17,90,80,100);
-    insertStudentAt(head,"C0201","pass2","Larry","C02",20,65,80,100);
-    insertStudentAt(head,"C0205","pass2","Kenney","C02",15,65,80,100);
-    insertStudentAt(head,"C0209","pass2","Brown","C02",21,65,80,100);
-    insertStudentAt(head,"C0214","pass2","Lily","C02",21,65,80,100);
-    insertStudentAt(head,"C0301","pass3","Lucy","C03",21,65,80,100);
-    insertStudentAt(head,"C0302","pass3","Emma","C03",21,65,80,100);
+    struct Student* savePtr = createEmptyStudentList();
+    insertStudentAt(savePtr,"C0101","pass1","Tom","C01",21,65,80,100);
+    insertStudentAt(savePtr,"C0105","pass1","John","C01",19,60,81,90);
+    insertStudentAt(savePtr,"C0120","pass1","Jimy","C01",21,75,60,98);
+    insertStudentAt(savePtr,"C0122","pass1","Frank","C01",17,90,80,100);
+    insertStudentAt(savePtr,"C0201","pass2","Larry","C02",20,65,80,100);
+    insertStudentAt(savePtr,"C0205","pass2","Kenney","C02",15,65,80,100);
+    insertStudentAt(savePtr,"C0209","pass2","Brown","C02",21,65,80,100);
+    insertStudentAt(savePtr,"C0214","pass2","Lily","C02",21,65,80,100);
+    insertStudentAt(savePtr,"C0301","pass3","Lucy","C03",21,65,80,100);
+    insertStudentAt(savePtr,"C0302","pass3","Emma","C03",21,65,80,100);
 
     //写入测试数据
-    
+    writeStudentFile(savePtr);
     //读取测试数据
-    
+    struct Student* loadPtr = createEmptyStudentList();
+    readStudentFile(loadPtr);
 }
 
 //读取admin数据，用于检验
