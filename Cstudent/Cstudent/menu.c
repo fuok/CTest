@@ -9,6 +9,7 @@
 #include "menu.h"
 
 AdminList cacheAdminList;
+StudentList cacheStudentList;
 
 
 //选择登陆方式
@@ -27,7 +28,7 @@ int loginTypeSelect(){
 }
 
 
-//管理员登陆，登录函数应该是menu方法中唯一（还有学生登陆）返回指针的，返回的指针作为缓存
+//管理员登陆，登录函数应该是menu方法中唯一（还有学生登陆）返回指针的，返回的指针作为修改密码的参数
 AdminList loginTypeAdmin(){
     //确认用户输入
     printf("请输入用户名:\n");
@@ -42,10 +43,10 @@ AdminList loginTypeAdmin(){
     
 //    printf("%s,%s\n",inputName,inputPass);
     
-    //缓存admin数据
+    //缓存管理员数据
     struct Admin* L = createEmptyAdminList();
     readAdminFile(L);
-    cacheAdminList=L;//缓存
+    cacheAdminList=L;
     
     AdminList currentPtr=getByUserName(L, inputName);//判断登录名是否存在
     if (currentPtr) {
@@ -116,9 +117,23 @@ int menuAdminManagement(){
         wrongInput(menuAdminManagement);
     }
     
+    //缓存学生数据
+    struct Student* L = createEmptyStudentList();
+    readStudentFile(L);
+    cacheStudentList=L;
+    
     //返回输入结果
     return key;
 }
+
+
+//显示学生列表
+void menuLoadAndShowStudentList(){
+    getLastStudentNode(cacheStudentList);
+}
+
+
+
 
 
 //学生登陆

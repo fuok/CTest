@@ -79,7 +79,7 @@ int getStudentListSize(StudentList L){
 StudentList getLastStudentNode(StudentList L){
     StudentList temPtr=L->next;
     while (temPtr!=NULL) {
-        printf("检验内容：%s,%s\n",temPtr->studentId,temPtr->password);
+        printf("学生信息：%s,%s,%s,%d,%d,%d,%d,%d\n",temPtr->studentId,temPtr->class,temPtr->studentName,temPtr->age,temPtr->score_1,temPtr->score_2,temPtr->score_3,temPtr->rank);
         temPtr=temPtr->next;
     }
     return temPtr;

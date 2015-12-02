@@ -14,13 +14,16 @@
 #include <string.h>
 #include "modeAdmin.h"
 #include "fileAdmin.h"
+#include "modeStudent.h"
+#include "fileStudent.h"
 
 
 int loginTypeSelect();
-AdminList loginTypeAdmin();//⚠️
+AdminList loginTypeAdmin();//⚠️返回指针
 int menuAdminMain();
 int menuAdminPassword();
 int menuAdminManagement();
+void menuLoadAndShowStudentList();
 
 int loginTypeStudent();//XXX
 
