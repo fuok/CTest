@@ -28,7 +28,10 @@ void menuAddStudent();
 void menuDeleteStudent();
 void menuEditStudent();
 
-int loginTypeStudent();//XXX
+StudentList loginTypeStudent();//⚠️返回指针
+int menuStudentMain();
+int menuStudentPassword();
+void menuShowCurrentStudentInfo();
 
 void wrongInput(int (*funcPtr)());
 void systemExit();

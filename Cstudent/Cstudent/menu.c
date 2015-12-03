@@ -42,11 +42,10 @@ AdminList loginTypeAdmin(){
     //printf("%s,%s\n",inputName,inputPass);
     
     //缓存管理员数据
-    struct Admin* L = createEmptyAdminList();
-    readAdminFile(L);
-    cacheAdminList=L;
+    cacheAdminList = createEmptyAdminList();
+    readAdminFile(cacheAdminList);
     
-    AdminList currentPtr=getByUserName(L, inputName);//判断登录名是否存在
+    AdminList currentPtr=getByUserName(cacheAdminList, inputName);//判断登录名是否存在
     if (currentPtr) {
         if (strcmp(inputPass, currentPtr->password)==0) {//判断密码是否正确
             printf("管理员登录成功\n");
@@ -177,28 +176,93 @@ void menuEditStudent(){
     //getLastStudentNode(cacheStudentList);
 }
 
+
 //学生登陆
-int loginTypeStudent(){
-    return 0;
+StudentList loginTypeStudent(){
+    //确认用户输入
+    printf("请输入学号:\n");
+    char inputName[20];//不能用[]={}声明
+    fscanf(stdin, "%s",inputName);
+    fflush(stdin);
+    
+    printf("请输入密码:\n");
+    char inputPass[20];
+    fscanf(stdin, "%s",inputPass);
+    fflush(stdin);
+    //printf("%s,%s\n",inputName,inputPass);
+    
+    //缓存学生数据
+    cacheStudentList = createEmptyStudentList();
+    readStudentFile(cacheStudentList);
+    
+    StudentList currentPtr=getByStudentId(cacheStudentList, inputName);//判断登录名是否存在
+    if (currentPtr) {
+        if (strcmp(inputPass, currentPtr->password)==0) {//判断密码是否正确
+            printf("学生登录成功\n");
+            return currentPtr;
+        }else{
+            printf("密码错误\n");
+        }
+    }else{
+        printf("学号不存在\n");
+    }
+    //返回输入结果
+    return NULL;
 }
 
 
+//学生主选项
+int menuStudentMain(){
+    //确认用户输入
+    int a=1,b=2;
+    printf("选择功能:\n%d,密码修改\n%d,查看个人信息\n",a,b);
+    int key;
+    scanf("%d",&key);
+    if (a!=key&&b!=key) {
+        wrongInput(menuAdminMain);
+    }
+    //返回输入结果
+    return key;
+}
 
 
+//学生修改密码
+int menuStudentPassword(StudentList currentPtr){
+    //确认用户输入
+    printf("请输入旧密码:\n");
+    char inputOld[20];
+    fscanf(stdin, "%s",inputOld);
+    fflush(stdin);
+    
+    printf("请输入新密码:\n");
+    char inputNew[20];
+    fscanf(stdin, "%s",inputNew);
+    fflush(stdin);
+    printf("TEST CODE:%s,%s\n",inputOld,currentPtr->password);
+    if (strcmp(inputOld, currentPtr->password)==0) {
+        strcpy(currentPtr->password, inputNew);
+        //currentPtr->password=inputNew;
+        printf("TEST CODE:new=%s\n",currentPtr->password);
+        writeStudentFile(cacheStudentList);
+        printf("修改成功\n");
+        return 1;
+    }else{
+        printf("密码错误\n");
+        return 0;
+    }
+}
 
 
+//查看当前学生信息
+void menuShowCurrentStudentInfo(StudentList currentPtr){
+    printf("-----学生信息-----\n");
+    printf("学号 姓名 班级 年龄 成绩1 成绩2 成绩3 名次\n");
+    printf("%s,%s,%s,%d,%d,%d,%d,%d\n",currentPtr->studentId,currentPtr->studentName,currentPtr->class,currentPtr->age,currentPtr->score_1,currentPtr->score_2,currentPtr->score_3,currentPtr->rank);
+    printf("-----------------\n");
+}
 
 
-
-
-
-
-
-
-
-
-
-
+//这个方法是当输入选项序号错误时，直接再次调用原方法以重新输入
 void wrongInput(int (*funcPtr)()){
     printf("输入错误请重新输入:\n");
     (*funcPtr)();

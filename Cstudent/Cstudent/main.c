@@ -94,7 +94,29 @@ void systemBoot(){
                 break;
                 
             case 2://学生登陆
-                loginTypeStudent();
+            {
+                int tryTime=0;
+                while (tryTime<3) {
+                    StudentList currentPtr=loginTypeStudent();//登陆，返回登陆对象的指针
+                    if (currentPtr) {//登录成功
+                        while (1) {
+                            switch (menuStudentMain()) {//学生主选单
+                                case 1://修改密码
+                                    menuStudentPassword(currentPtr);
+                                    break;
+                                case 2://查看个人信息
+                                    menuShowCurrentStudentInfo(currentPtr);
+                                    break;
+                            }
+                        }
+                    }else{//登录失败
+                        tryTime++;
+                        printf("剩余尝试次数:%d\n",3-tryTime);
+                    }
+                }
+                printf("失败超过3次,程序退出!\n");
+                continue;
+            }
                 break;
         }
         
