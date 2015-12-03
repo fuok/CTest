@@ -62,6 +62,7 @@ void systemStart(){
                         menuDeleteStudent();
                         break;
                     case 4://修改
+                        menuEditStudent();
                         break;
                 }
             }

@@ -81,6 +81,21 @@ StudentList deleteByStudentId(StudentList L,char* studentId){
 }
 
 
+//修改节点资料
+StudentList editStudent(StudentList L,char* studentId,char* password,char* studentName,char* class,int age,int score_1,int score_2,int score_3){
+    assert(L!=NULL);
+    strcpy(L->studentId, studentId);
+    strcpy(L->password, password);
+    strcpy(L->studentName, studentName);
+    strcpy(L->class, class);
+    L->age=age;
+    L->score_1=score_1;
+    L->score_2=score_2;
+    L->score_3=score_3;
+    return L;
+}
+
+
 //遍历链表,返回长度
 int getStudentListSize(StudentList L){
     //    printf("遍历链表:\n");
@@ -98,7 +113,7 @@ int getStudentListSize(StudentList L){
 StudentList getLastStudentNode(StudentList L){
     StudentList temPtr=L->next;
     while (temPtr!=NULL) {
-        printf("%s,%s,%s,%d,%d,%d,%d,%d\n",temPtr->studentId,temPtr->class,temPtr->studentName,temPtr->age,temPtr->score_1,temPtr->score_2,temPtr->score_3,temPtr->rank);
+        printf("%s,%s,%s,%d,%d,%d,%d,%d\n",temPtr->studentId,temPtr->studentName,temPtr->class,temPtr->age,temPtr->score_1,temPtr->score_2,temPtr->score_3,temPtr->rank);
         temPtr=temPtr->next;
     }
     return temPtr;

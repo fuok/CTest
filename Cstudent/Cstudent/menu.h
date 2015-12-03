@@ -26,6 +26,7 @@ int menuAdminManagement();
 void menuLoadAndShowStudentList();
 void menuAddStudent();
 void menuDeleteStudent();
+void menuEditStudent();
 
 int loginTypeStudent();//XXX
 
