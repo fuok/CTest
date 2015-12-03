@@ -56,8 +56,10 @@ void systemStart(){
                         menuLoadAndShowStudentList();
                         break;
                     case 2://添加
+                        menuAddStudent();
                         break;
                     case 3://删除
+                        menuDeleteStudent();
                         break;
                     case 4://修改
                         break;

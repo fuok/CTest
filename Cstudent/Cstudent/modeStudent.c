@@ -62,6 +62,25 @@ StudentList getByStudentId(StudentList L,char* studentId){
 }
 
 
+//删除学生节点，这里是按学号查找
+StudentList deleteByStudentId(StudentList L,char* studentId){
+    assert(L!=NULL);
+    //保存前一节点
+    StudentList temPtr=L->next;
+    while ((temPtr!=NULL)&&(temPtr->next!=NULL)){
+        StudentList delPtr=temPtr->next;//保存要删除的节点
+        if (strcmp(delPtr->studentId,studentId)==0) {//找到了待删除节点
+            temPtr->next=delPtr->next;
+            free(delPtr);
+            delPtr=NULL;
+            break;
+        }
+        temPtr=temPtr->next;
+    }
+    return temPtr;
+}
+
+
 //遍历链表,返回长度
 int getStudentListSize(StudentList L){
     //    printf("遍历链表:\n");
@@ -79,7 +98,7 @@ int getStudentListSize(StudentList L){
 StudentList getLastStudentNode(StudentList L){
     StudentList temPtr=L->next;
     while (temPtr!=NULL) {
-        printf("学生信息：%s,%s,%s,%d,%d,%d,%d,%d\n",temPtr->studentId,temPtr->class,temPtr->studentName,temPtr->age,temPtr->score_1,temPtr->score_2,temPtr->score_3,temPtr->rank);
+        printf("%s,%s,%s,%d,%d,%d,%d,%d\n",temPtr->studentId,temPtr->class,temPtr->studentName,temPtr->age,temPtr->score_1,temPtr->score_2,temPtr->score_3,temPtr->rank);
         temPtr=temPtr->next;
     }
     return temPtr;

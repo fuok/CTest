@@ -41,7 +41,7 @@ AdminList loginTypeAdmin(){
     fscanf(stdin, "%s",inputPass);
     fflush(stdin);
     
-//    printf("%s,%s\n",inputName,inputPass);
+    //    printf("%s,%s\n",inputName,inputPass);
     
     //缓存管理员数据
     struct Admin* L = createEmptyAdminList();
@@ -94,7 +94,7 @@ int menuAdminPassword(AdminList currentPtr){
     printf("%s,%s\n",inputOld,currentPtr->password);
     if (strcmp(inputOld, currentPtr->password)==0) {
         strcpy(currentPtr->password, inputNew);
-//        currentPtr->password=inputNew;
+        //        currentPtr->password=inputNew;
         printf("new=%s\n",currentPtr->password);
         writeAdminFile(cacheAdminList);
         printf("修改成功\n");
@@ -129,12 +129,41 @@ int menuAdminManagement(){
 
 //显示学生列表
 void menuLoadAndShowStudentList(){
+    printf("-----学生信息-----\n");
+    printf("学号,班级,姓名,年龄,成绩1,成绩2,成绩3,名次\n");
     getLastStudentNode(cacheStudentList);
+    printf("-----------------\n");
 }
 
 
+//添加学生
+void menuAddStudent(){
+    char studentId[20],password[20],studentName[20],class[20];
+    int age,score_1,score_2,score_3;
+    printf("输入学生资料:\n");
+    printf("依次输入学号 密码 班级 姓名 年龄 成绩1 成绩2 成绩3\n");
+    fscanf(stdin,"%s %s %s %s %d %d %d %d",studentId,password,studentName,class,&age,&score_1,&score_2,&score_3);
+    insertStudentAt(cacheStudentList,studentId,password,studentName,class,age,score_1,score_2,score_3);
+    writeStudentFile(cacheStudentList);
+    printf("Done!\n");
+//    getLastStudentNode(cacheStudentList);
+}
 
+//删除学生
+void menuDeleteStudent(){
+    char studentId[20];
+    printf("输入待删除的学生学号:\n");
+    fscanf(stdin, "%s",studentId);
+    printf("删除ing...:%s\n",studentId);
+    deleteByStudentId(cacheStudentList,studentId);
+    writeStudentFile(cacheStudentList);
+        getLastStudentNode(cacheStudentList);
+}
 
+//修改学生
+void menuEditStudent(){
+    
+}
 
 //学生登陆
 int loginTypeStudent(){

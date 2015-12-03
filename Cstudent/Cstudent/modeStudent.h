@@ -34,6 +34,7 @@ StudentList createNewStudentNode();
 StudentList createEmptyStudentList();
 StudentList insertStudentAt();
 StudentList getByStudentId();
+StudentList deleteByStudentId();
 int getStudentListSize();
 StudentList getLastStudentNode();
 int getStructStudentSize();

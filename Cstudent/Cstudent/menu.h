@@ -24,6 +24,8 @@ int menuAdminMain();
 int menuAdminPassword();
 int menuAdminManagement();
 void menuLoadAndShowStudentList();
+void menuAddStudent();
+void menuDeleteStudent();
 
 int loginTypeStudent();//XXX
 
