@@ -22,7 +22,6 @@ int loginTypeSelect(){
     if (a!=key&&b!=key) {
         wrongInput(loginTypeSelect);
     }
-    
     //返回输入结果
     return key;
 }
@@ -117,9 +116,8 @@ int menuAdminManagement(){
     }
     
     //缓存学生数据
-    struct Student* L = createEmptyStudentList();
-    readStudentFile(L);
-    cacheStudentList=L;
+    cacheStudentList = createEmptyStudentList();
+    readStudentFile(cacheStudentList);
     
     //返回输入结果
     return key;

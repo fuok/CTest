@@ -15,8 +15,9 @@
 #include "fileStudent.h"
 
 
-void systemStart();
 void systemTest();
+void systemBoot();
+
 void printAdminInfo();
 void printStudentInfo();
 void addTestAdmin();
@@ -29,7 +30,8 @@ int main(int argc, const char * argv[]) {
         
         addTestAdmin();
         addTestStudent();
-        systemStart();
+        
+        systemBoot();
     }else{
         systemTest();
     }
@@ -41,42 +43,49 @@ int main(int argc, const char * argv[]) {
 
 
 //程序启动
-void systemStart(){
-    int selection=loginTypeSelect();
-    if (1==selection) {//管理员登录
-        AdminList currentPtr=loginTypeAdmin();//登陆，返回登陆对象的指针
-        if (currentPtr) {//登录成功
-            selection=menuAdminMain();
-            if (1==selection) {//修改密码
-                menuAdminPassword(currentPtr);
-            }else{//学生管理
-                selection=menuAdminManagement();
-                switch (selection) {
-                    case 1://学生浏览//TODO, 增加二级选单，排序
-                        menuLoadAndShowStudentList();
-                        break;
-                    case 2://添加
-                        menuAddStudent();
-                        break;
-                    case 3://删除
-                        menuDeleteStudent();
-                        break;
-                    case 4://修改
-                        menuEditStudent();
-                        break;
+void systemBoot(){
+    while (1) {
+        printf("-----system reboot-----\n");
+        switch (loginTypeSelect()) {
+            case 1://管理员登录
+            {
+                AdminList currentPtr=loginTypeAdmin();//登陆，返回登陆对象的指针
+                if (currentPtr) {//登录成功
+                    switch (menuAdminMain()) {
+                        case 1:
+                            menuAdminPassword(currentPtr);
+                            break;
+                        case 2:
+                            switch (menuAdminManagement()) {
+                                case 1://学生浏览//TODO, 增加二级选单，排序
+                                    menuLoadAndShowStudentList();
+                                    break;
+                                case 2://添加
+                                    menuAddStudent();
+                                    break;
+                                case 3://删除
+                                    menuDeleteStudent();
+                                    break;
+                                case 4://修改
+                                    menuEditStudent();
+                                    break;
+                            }
+                            break;
+                    }
+                }else{//登录失败
+                    continue;
                 }
             }
-        }else{//登录失败
-            
+                break;
+                
+            case 2://学生登陆
+                loginTypeStudent();
+                break;
         }
-    }else{//学生登陆
-        loginTypeStudent();
+        
+        
     }
-    
-    
-    
 }
-
 
 //测试数据区域－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 void systemTest(){
@@ -125,7 +134,7 @@ void addTestStudent(){
     insertStudentAt(savePtr,"C0214","pass2","Lily","C02",21,65,80,100);
     insertStudentAt(savePtr,"C0301","pass3","Lucy","C03",21,65,80,100);
     insertStudentAt(savePtr,"C0302","pass3","Emma","C03",21,65,80,100);
-
+    
     //写入测试数据
     writeStudentFile(savePtr);
     //读取测试数据

@@ -28,11 +28,11 @@ AdminList readAdminFile(AdminList L){
     fseek(fp, 0, SEEK_END);
     int length=(int)ftell(fp)/getStructAdminSize();
     fseek(fp, 0, SEEK_SET);
-    printf("TEST:数据长度:%d\n",length);
+    printf("TEST CODE:数据长度:%d\n",length);
     for (int i=0;i<length; i++) {
         struct Admin admin;
         fread(&admin,sizeof(struct Admin), 1, fp);
-        printf("TEST:读取:%s,%s\n",admin.userName,admin.password);
+        printf("TEST CODE:读取:%s,%s\n",admin.userName,admin.password);
         //        insertAdminNode(L, admin);//可能是这个直接传对象方法不行，用回老方法试试，TODO
         insertAdminAt(L, admin.userName, admin.password);
     }
@@ -50,7 +50,7 @@ void writeAdminFile(AdminList L){
     }
     //这里我没有去研究能否直接写入整个list，仍是以保存为单个结构体数据再写入的方法//估计是不行的，保存内存地址无意义
     int dataLength=getAdminListSize(L);//貌似也没什么用
-    printf("TEST:写入admin数据，长度：%d\n",dataLength);
+    printf("TEST CODE:写入admin数据，长度：%d\n",dataLength);
     AdminList temPtr=L->next;
     
     while (temPtr!=NULL) {
