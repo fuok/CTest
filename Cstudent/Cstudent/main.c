@@ -49,32 +49,38 @@ void systemBoot(){
         switch (loginTypeSelect()) {
             case 1://管理员登录
             {
-                AdminList currentPtr=loginTypeAdmin();//登陆，返回登陆对象的指针
-                if (currentPtr) {//登录成功
-                    switch (menuAdminMain()) {
-                        case 1:
-                            menuAdminPassword(currentPtr);
-                            break;
-                        case 2:
-                            switch (menuAdminManagement()) {
-                                case 1://学生浏览//TODO, 增加二级选单，排序
-                                    menuLoadAndShowStudentList();
-                                    break;
-                                case 2://添加
-                                    menuAddStudent();
-                                    break;
-                                case 3://删除
-                                    menuDeleteStudent();
-                                    break;
-                                case 4://修改
-                                    menuEditStudent();
-                                    break;
-                            }
-                            break;
+                int tryTime=0;
+                while (tryTime<3) {
+                    AdminList currentPtr=loginTypeAdmin();//登陆，返回登陆对象的指针
+                    if (currentPtr) {//登录成功
+                        switch (menuAdminMain()) {
+                            case 1:
+                                menuAdminPassword(currentPtr);
+                                break;
+                            case 2:
+                                switch (menuAdminManagement()) {
+                                    case 1://学生浏览//TODO, 增加二级选单，排序
+                                        menuLoadAndShowStudentList();
+                                        break;
+                                    case 2://添加
+                                        menuAddStudent();
+                                        break;
+                                    case 3://删除
+                                        menuDeleteStudent();
+                                        break;
+                                    case 4://修改
+                                        menuEditStudent();
+                                        break;
+                                }
+                                break;
+                        }
+                    }else{//登录失败
+                        tryTime++;
+                        printf("剩余尝试次数:%d\n",3-tryTime);
                     }
-                }else{//登录失败
-                    continue;
                 }
+                printf("失败超过3次,程序退出!\n");
+                continue;
             }
                 break;
                 
