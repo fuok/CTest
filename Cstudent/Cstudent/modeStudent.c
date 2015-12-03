@@ -93,11 +93,9 @@ StudentList editStudent(StudentList L,char* studentId,char* password,char* stude
 
 //遍历链表,返回长度
 int getStudentListSize(StudentList L){
-    //    printf("遍历链表:\n");
     int index=0;
     struct Student* temp=L->next;//通过一个临时指针遍历，不能操作原指针//这里的遍历没算头指针
     while (temp!=NULL) {
-        //        printf("%d\n",temp->data);
         temp=temp->next;
         index++;//如果需要获取链表长度，在此进行处理
     }
@@ -112,6 +110,22 @@ StudentList getLastStudentNode(StudentList L){
         temPtr=temPtr->next;
     }
     return temPtr;
+}
+
+//链表转数组
+StudentList getStudentArray(StudentList L,StudentList nodeArray){
+    //生命数组
+    int length=getStudentListSize(L);
+    StudentNode mArray[length];
+    //遍历链表
+    StudentList temPtr=L->next;
+    int i=0;
+    while (temPtr!=NULL) {
+        mArray[i]=*temPtr;
+        temPtr=temPtr->next;
+        i++;
+    }
+    return nodeArray=mArray;
 }
 
 //创建节点函数,不显式引用

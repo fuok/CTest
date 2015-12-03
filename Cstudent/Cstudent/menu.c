@@ -118,11 +118,54 @@ int menuAdminManagement(){
     return key;
 }
 
+//选择学生排序方式
+int menuSelectStudentListType(){
+    //确认用户输入
+    int a=1;
+    printf("选择排序方式:\n%d,按姓名\n",a);
+    int key;
+    scanf("%d",&key);
+    if (a!=key) {
+        wrongInput(menuSelectStudentListType);
+    }
+    //返回输入结果
+    return key;
+}
+
 //显示学生列表
-void menuLoadAndShowStudentList(){
+void menuShowStudentListByName(){
     printf("-----学生信息-----\n");
     printf("学号 姓名 班级 年龄 成绩1 成绩2 成绩3 名次\n");
-    getLastStudentNode(cacheStudentList);
+    
+    //声明数组
+    int length=getStudentListSize(cacheStudentList);
+    StudentNode nodeArray[length];
+    
+    //遍历链表
+    StudentList temPtr=cacheStudentList->next;
+    int i=0;
+    while (temPtr!=NULL) {
+        nodeArray[i]=*temPtr;
+        temPtr=temPtr->next;
+        i++;
+    }
+    
+    //数组排序
+    for (int i=0; i<length-1; i++) {
+        for (int j=i+1; j<length; j++) {
+            if ((*(nodeArray[i].studentName))>(*(nodeArray[j].studentName))) {//根据姓名ASCII排序
+                StudentNode tempNode = nodeArray[i];
+                nodeArray[i]=nodeArray[j];
+                nodeArray[j]=tempNode;
+            }
+        }
+    }
+    
+    //输出
+    for (int i=0; i<length; i++) {
+        printf("%s,%s,%s,%d,%d,%d,%d,%d\n",nodeArray[i].studentId,nodeArray[i].studentName,nodeArray[i].class,nodeArray[i].age,nodeArray[i].score_1,nodeArray[i].score_2,nodeArray[i].score_3,nodeArray[i].rank);
+        printf("TEST CODE:%d\n",*(nodeArray[i].studentName));
+    }
     printf("-----------------\n");
 }
 

@@ -39,6 +39,7 @@ StudentList editStudent();
 
 int getStudentListSize();
 StudentList getLastStudentNode();
+StudentList getStudentArray();
 int getStructStudentSize();
 
 

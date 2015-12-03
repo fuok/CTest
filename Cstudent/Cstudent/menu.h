@@ -23,7 +23,8 @@ AdminList loginTypeAdmin();//⚠️返回指针
 int menuAdminMain();
 int menuAdminPassword();
 int menuAdminManagement();
-void menuLoadAndShowStudentList();
+int menuSelectStudentListType();
+void menuShowStudentListByName();
 void menuAddStudent();
 void menuDeleteStudent();
 void menuEditStudent();

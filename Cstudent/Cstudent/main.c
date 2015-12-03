@@ -61,8 +61,12 @@ void systemBoot(){
                                     int back=1;//如果这一级是可以后退的
                                     while (back) {
                                         switch (menuAdminManagement()) {
-                                            case 1://学生浏览//TODO, 增加二级选单，排序
-                                                menuLoadAndShowStudentList();
+                                            case 1://学生浏览
+                                                switch (menuSelectStudentListType()) {//选择排序方式
+                                                    case 1://按名称
+                                                        menuShowStudentListByName();
+                                                        break;
+                                                }
                                                 break;
                                             case 2://添加
                                                 menuAddStudent();
