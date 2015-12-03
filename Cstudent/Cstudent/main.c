@@ -37,7 +37,6 @@ int main(int argc, const char * argv[]) {
     }
     
     
-    
     return 0;
 }
 
@@ -53,26 +52,36 @@ void systemBoot(){
                 while (tryTime<3) {
                     AdminList currentPtr=loginTypeAdmin();//登陆，返回登陆对象的指针
                     if (currentPtr) {//登录成功
-                        switch (menuAdminMain()) {
-                            case 1:
-                                menuAdminPassword(currentPtr);
-                                break;
-                            case 2:
-                                switch (menuAdminManagement()) {
-                                    case 1://学生浏览//TODO, 增加二级选单，排序
-                                        menuLoadAndShowStudentList();
-                                        break;
-                                    case 2://添加
-                                        menuAddStudent();
-                                        break;
-                                    case 3://删除
-                                        menuDeleteStudent();
-                                        break;
-                                    case 4://修改
-                                        menuEditStudent();
-                                        break;
+                        while (1) {
+                            switch (menuAdminMain()) {//admin主选单
+                                case 1://修改密码
+                                    menuAdminPassword(currentPtr);
+                                    break;
+                                case 2://学生管理
+                                {
+                                    int back=1;//如果这一级是可以后退的
+                                    while (back) {
+                                        switch (menuAdminManagement()) {
+                                            case 1://学生浏览//TODO, 增加二级选单，排序
+                                                menuLoadAndShowStudentList();
+                                                break;
+                                            case 2://添加
+                                                menuAddStudent();
+                                                break;
+                                            case 3://删除
+                                                menuDeleteStudent();
+                                                break;
+                                            case 4://修改
+                                                menuEditStudent();
+                                                break;
+                                            case 5://返回上级
+                                                back=0;
+                                                break;
+                                        }
+                                    }
                                 }
-                                break;
+                                    break;
+                            }
                         }
                     }else{//登录失败
                         tryTime++;

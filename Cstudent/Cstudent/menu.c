@@ -89,11 +89,11 @@ int menuAdminPassword(AdminList currentPtr){
     char inputNew[20];
     fscanf(stdin, "%s",inputNew);
     fflush(stdin);
-    printf("%s,%s\n",inputOld,currentPtr->password);
+    printf("TEST CODE:%s,%s\n",inputOld,currentPtr->password);
     if (strcmp(inputOld, currentPtr->password)==0) {
         strcpy(currentPtr->password, inputNew);
         //currentPtr->password=inputNew;
-        printf("new=%s\n",currentPtr->password);
+        printf("TEST CODE:new=%s\n",currentPtr->password);
         writeAdminFile(cacheAdminList);
         printf("修改成功\n");
         return 1;
@@ -107,11 +107,11 @@ int menuAdminPassword(AdminList currentPtr){
 //admin学生管理
 int menuAdminManagement(){
     //确认用户输入
-    int a=1,b=2,c=3,d=4;
-    printf("选择操作:\n%d,学生浏览\n%d,添加学生\n%d,删除学生\n%d,修改学生\n",a,b,c,d);
+    int a=1,b=2,c=3,d=4,e=5;
+    printf("选择操作:\n%d,学生浏览\n%d,添加学生\n%d,删除学生\n%d,修改学生\n%d,返回上级\n",a,b,c,d,e);
     int key;
     scanf("%d",&key);
-    if (a!=key&&b!=key&&c!=key&&d!=key) {
+    if (a!=key&&b!=key&&c!=key&&d!=key&&e!=key) {
         wrongInput(menuAdminManagement);
     }
     
