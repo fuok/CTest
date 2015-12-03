@@ -26,7 +26,6 @@ int loginTypeSelect(){
     return key;
 }
 
-
 //管理员登陆，登录函数应该是menu方法中唯一（还有学生登陆）返回指针的，返回的指针作为修改密码的参数
 AdminList loginTypeAdmin(){
     //确认用户输入
@@ -60,7 +59,6 @@ AdminList loginTypeAdmin(){
     return NULL;
 }
 
-
 //admin主选项
 int menuAdminMain(){
     //确认用户输入
@@ -74,7 +72,6 @@ int menuAdminMain(){
     //返回输入结果
     return key;
 }
-
 
 //admin修改密码
 int menuAdminPassword(AdminList currentPtr){
@@ -102,7 +99,6 @@ int menuAdminPassword(AdminList currentPtr){
     }
 }
 
-
 //admin学生管理
 int menuAdminManagement(){
     //确认用户输入
@@ -122,7 +118,6 @@ int menuAdminManagement(){
     return key;
 }
 
-
 //显示学生列表
 void menuLoadAndShowStudentList(){
     printf("-----学生信息-----\n");
@@ -130,7 +125,6 @@ void menuLoadAndShowStudentList(){
     getLastStudentNode(cacheStudentList);
     printf("-----------------\n");
 }
-
 
 //添加学生
 void menuAddStudent(){
@@ -176,7 +170,6 @@ void menuEditStudent(){
     //getLastStudentNode(cacheStudentList);
 }
 
-
 //学生登陆
 StudentList loginTypeStudent(){
     //确认用户输入
@@ -210,7 +203,6 @@ StudentList loginTypeStudent(){
     return NULL;
 }
 
-
 //学生主选项
 int menuStudentMain(){
     //确认用户输入
@@ -224,7 +216,6 @@ int menuStudentMain(){
     //返回输入结果
     return key;
 }
-
 
 //学生修改密码
 int menuStudentPassword(StudentList currentPtr){
@@ -252,7 +243,6 @@ int menuStudentPassword(StudentList currentPtr){
     }
 }
 
-
 //查看当前学生信息
 void menuShowCurrentStudentInfo(StudentList currentPtr){
     printf("-----学生信息-----\n");
@@ -261,13 +251,13 @@ void menuShowCurrentStudentInfo(StudentList currentPtr){
     printf("-----------------\n");
 }
 
-
 //这个方法是当输入选项序号错误时，直接再次调用原方法以重新输入
 void wrongInput(int (*funcPtr)()){
     printf("输入错误请重新输入:\n");
     (*funcPtr)();
 }
 
+//退出程序，暂时没用到
 void systemExit(){
     exit(0);
 }

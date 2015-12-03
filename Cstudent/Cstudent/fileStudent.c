@@ -11,7 +11,7 @@
 char* studentFilePath="/Users/liuyang/Documents/workspace/CTest/student.txt";
 
 
-//读取学生数据，返回链表，此代码应只用于读取全局缓存数据
+//读取学生数据,返回链表,此代码应只用于读取全局缓存数据
 StudentList readStudentFile(StudentList L){
     FILE* fp;
     if ((fp=fopen(studentFilePath, "rb"))==NULL) {
@@ -34,8 +34,7 @@ StudentList readStudentFile(StudentList L){
     return L;
 }
 
-
-//写入学生数据，此代码应只用于写入全局缓存数据
+//写入学生数据,此代码应只用于写入全局缓存数据
 void writeStudentFile(StudentList L){
     FILE* fp;
     if ((fp=fopen(studentFilePath, "wb+"))==NULL) {
@@ -53,5 +52,3 @@ void writeStudentFile(StudentList L){
     }
     fclose(fp);
 }
-
-

@@ -41,7 +41,6 @@ AdminList insertAdminNode(AdminList L,AdminNode node){
     return L;
 }
 
-
 //添加节点，头插法
 AdminList insertAdminAt(AdminList L,char* userName,char* password){
 //    printf("loop!!\n");
@@ -64,7 +63,6 @@ AdminList insertAdminAt(AdminList L,char* userName,char* password){
     return newNode;
 }
 
-
 //按值查找//这里不解决重复值的问题
 AdminList getByUserName(AdminList L,char* userName){
     assert(L!=NULL);
@@ -74,7 +72,6 @@ AdminList getByUserName(AdminList L,char* userName){
     }
     return temPtr;
 }
-
 
 //遍历链表,返回长度
 int getAdminListSize(AdminList L){
@@ -99,7 +96,6 @@ AdminList getLastAdminNode(AdminList L){
     return temPtr;
 }
 
-
 //创建节点函数,不显式引用
 AdminList createNewAdminNode(char* userName,char* password){
     AdminNode *newNode=NULL;//创建链表的第一步是创建节点
@@ -114,7 +110,6 @@ AdminList createNewAdminNode(char* userName,char* password){
     strcpy(newNode->password, password);
     return newNode;
 }
-
 
 //获取结构体占用的内存大小,不知道为什么在main函数不能使用这边头文件的typedef，所以定义这个
 int getStructAdminSize(){

@@ -34,7 +34,6 @@ StudentList createEmptyStudentList(){
     return createNewStudentNode("defaut","defaut","defaut","defaut",-1,-1,-1,-1);
 }
 
-
 //添加节点，头插法
 StudentList insertStudentAt(StudentList L,char* studentId,char* password,char* studentName,char* class,int age,int score_1,int score_2,int score_3){
     //    printf("loop!!\n");
@@ -50,7 +49,6 @@ StudentList insertStudentAt(StudentList L,char* studentId,char* password,char* s
     return newNode;
 }
 
-
 //按值查找//这里不解决重复值的问题//用于登陆
 StudentList getByStudentId(StudentList L,char* studentId){
     assert(L!=NULL);
@@ -60,7 +58,6 @@ StudentList getByStudentId(StudentList L,char* studentId){
     }
     return temPtr;
 }
-
 
 //删除学生节点，这里是按学号查找
 StudentList deleteByStudentId(StudentList L,char* studentId){
@@ -80,7 +77,6 @@ StudentList deleteByStudentId(StudentList L,char* studentId){
     return temPtr;
 }
 
-
 //修改节点资料
 StudentList editStudent(StudentList L,char* studentId,char* password,char* studentName,char* class,int age,int score_1,int score_2,int score_3){
     assert(L!=NULL);
@@ -94,7 +90,6 @@ StudentList editStudent(StudentList L,char* studentId,char* password,char* stude
     L->score_3=score_3;
     return L;
 }
-
 
 //遍历链表,返回长度
 int getStudentListSize(StudentList L){
@@ -119,7 +114,6 @@ StudentList getLastStudentNode(StudentList L){
     return temPtr;
 }
 
-
 //创建节点函数,不显式引用
 StudentList createNewStudentNode(char* studentId,char* password,char* studentName,char* class,int age,int score_1,int score_2,int score_3){
     StudentNode *newNode=NULL;//创建链表的第一步是创建节点
@@ -142,7 +136,6 @@ StudentList createNewStudentNode(char* studentId,char* password,char* studentNam
     newNode->score_3=score_3;
     return newNode;
 }
-
 
 //获取结构体占用的内存大小,不知道为什么在main函数不能使用这边头文件的typedef，所以定义这个
 int getStructStudentSize(){

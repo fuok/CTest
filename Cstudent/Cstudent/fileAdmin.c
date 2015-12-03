@@ -11,7 +11,7 @@
 char* adminFilePath="/Users/liuyang/Documents/workspace/CTest/admin.txt";
 
 
-//
+//读取学生数据,返回链表,此代码应只用于读取全局缓存数据
 AdminList readAdminFile(AdminList L){
     FILE* fp;
     if ((fp=fopen(adminFilePath, "rb"))==NULL) {//为何w+也ok的
@@ -40,8 +40,7 @@ AdminList readAdminFile(AdminList L){
     return L;
 }
 
-
-//
+//写入学生数据,此代码应只用于写入全局缓存数据
 void writeAdminFile(AdminList L){
     FILE* fp;
     if ((fp=fopen(adminFilePath, "wb+"))==NULL) {
@@ -61,5 +60,3 @@ void writeAdminFile(AdminList L){
     
     fclose(fp);
 }
-
-

@@ -40,7 +40,6 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-
 //程序启动
 void systemBoot(){
     while (1) {
@@ -119,10 +118,9 @@ void systemBoot(){
             }
                 break;
         }
-        
-        
     }
 }
+
 
 //测试数据区域－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 void systemTest(){
@@ -137,7 +135,6 @@ void systemTest(){
     //不行，好像还是需要缓存的😭，至少要缓存当前用户的登录名吧
     
 }
-
 
 //添加admin测试数据
 void addTestAdmin(){
@@ -155,7 +152,6 @@ void addTestAdmin(){
     struct Admin* loadPtr = createEmptyAdminList();
     readAdminFile(loadPtr);
 }
-
 
 //添加student测试数据
 void addTestStudent(){
