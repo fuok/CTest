@@ -63,8 +63,8 @@ StudentList getByStudentId(StudentList L,char* studentId){
 StudentList deleteByStudentId(StudentList L,char* studentId){
     assert(L!=NULL);
     //保存前一节点
-    StudentList temPtr=L->next;
-    while ((temPtr!=NULL)&&(temPtr->next!=NULL)){
+    StudentList temPtr=L;
+    while (temPtr->next!=NULL){
         StudentList delPtr=temPtr->next;//保存要删除的节点
         if (strcmp(delPtr->studentId,studentId)==0) {//找到了待删除节点
             temPtr->next=delPtr->next;
