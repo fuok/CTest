@@ -16,7 +16,8 @@
 
 
 void systemTest();
-void systemBoot();
+void systemStart();
+void systemReboot();
 
 void printAdminInfo();
 void printStudentInfo();
@@ -31,7 +32,7 @@ int main(int argc, const char * argv[]) {
         addTestAdmin();
         addTestStudent();
         
-        systemBoot();
+        systemReboot();
     }else{
         systemTest();
     }
@@ -41,7 +42,12 @@ int main(int argc, const char * argv[]) {
 }
 
 //程序启动
-void systemBoot(){
+void systemReboot(){
+    systemStart();
+}
+
+//程序启动
+void systemStart(){
     while (1) {
         printf("-----system reboot-----\n");
         switch (loginTypeSelect()) {
@@ -84,6 +90,9 @@ void systemBoot(){
                                     }
                                 }
                                     break;
+                                case 3://退出登录
+                                    systemReboot();
+                                    break;
                             }
                         }
                     }else{//登录失败
@@ -109,6 +118,9 @@ void systemBoot(){
                                     break;
                                 case 2://查看个人信息
                                     menuShowCurrentStudentInfo(currentPtr);
+                                    break;
+                                case 3://退出登录
+                                    systemReboot();
                                     break;
                             }
                         }

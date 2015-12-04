@@ -62,11 +62,11 @@ AdminList loginTypeAdmin(){
 //admin主选项
 int menuAdminMain(){
     //确认用户输入
-    int a=1,b=2;
-    printf("选择功能:\n%d,密码修改\n%d,学生管理\n",a,b);
+    int a=1,b=2,c=3;
+    printf("选择功能:\n%d,密码修改\n%d,学生管理\n%d,退出登录\n",a,b,c);
     int key;
     scanf("%d",&key);
-    if (a!=key&&b!=key) {
+    if (a!=key&&b!=key&&c!=key) {
         wrongInput(menuAdminMain);
     }
     //返回输入结果
@@ -252,11 +252,11 @@ StudentList loginTypeStudent(){
 //学生主选项
 int menuStudentMain(){
     //确认用户输入
-    int a=1,b=2;
-    printf("选择功能:\n%d,密码修改\n%d,查看个人信息\n",a,b);
+    int a=1,b=2,c=3;
+    printf("选择功能:\n%d,密码修改\n%d,查看个人信息\n%d,退出登录\n",a,b,c);
     int key;
     scanf("%d",&key);
-    if (a!=key&&b!=key) {
+    if (a!=key&&b!=key&&c!=key) {
         wrongInput(menuAdminMain);
     }
     //返回输入结果
