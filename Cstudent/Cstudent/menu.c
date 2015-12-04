@@ -164,20 +164,23 @@ void menuShowStudentListByName(){
     //输出
     for (int i=0; i<length; i++) {
         printf("%s,%s,%s,%d,%d,%d,%d,%d\n",nodeArray[i].studentId,nodeArray[i].studentName,nodeArray[i].class,nodeArray[i].age,nodeArray[i].score_1,nodeArray[i].score_2,nodeArray[i].score_3,nodeArray[i].rank);
-        printf("TEST CODE:%d\n",*(nodeArray[i].studentName));
+//        printf("TEST CODE:%d\n",*(nodeArray[i].studentName));//检查ASCII
     }
     printf("-----------------\n");
 }
 
 //添加学生
 void menuAddStudent(){
-    char studentId[20],password[20],studentName[20],class[20];
+    char studentName[20],class[20];
     int age,score_1,score_2,score_3;
     printf("输入学生资料:\n");
-    printf("依次输入学号 密码 姓名 班级 年龄 成绩1 成绩2 成绩3\n");
-    fscanf(stdin,"%s %s %s %s %d %d %d %d",studentId,password,studentName,class,&age,&score_1,&score_2,&score_3);
+    printf("依次输入:姓名 班级 年龄 成绩1 成绩2 成绩3\n");
+    fscanf(stdin,"%s %s %d %d %d %d",studentName,class,&age,&score_1,&score_2,&score_3);
     fflush(stdin);
-    insertStudentAt(cacheStudentList,studentId,password,studentName,class,age,score_1,score_2,score_3);
+    //自动生成学号和初始密码
+    char* studentId=getNewStudentId(cacheStudentList,class);
+    char* defautPassword="123";
+    insertStudentAt(cacheStudentList,studentId,defautPassword,studentName,class,age,score_1,score_2,score_3);
     writeStudentFile(cacheStudentList);
     printf("Done!\n");
     //getLastStudentNode(cacheStudentList);

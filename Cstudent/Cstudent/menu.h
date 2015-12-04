@@ -16,6 +16,7 @@
 #include "fileAdmin.h"
 #include "modeStudent.h"
 #include "fileStudent.h"
+#include "tools.h"
 
 
 int loginTypeSelect();
